@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <form id="input_form">
+            <div>
+                <h1>Type the review:</h1>
+                <input type="text" id="input_text"/>
+            </div>
+            <input type="submit" value="Получить ответ"/>
+        </form>
+        <h1 id="res_binary"></h1>
+        <h1 id="res_numeric"></h1>
+
+        <script>
+            const input_form = document.getElementById("input_form");
+            const input_text = document.getElementById("input_text");
+
+            input_form.onsubmit = function(e){
+                e.preventDefault();
+                const text = input_text.value;
+                const req = new XMLHttpRequest();
+
+                req.onreadystatechange = function(){
+                    if(this.readyState == 4 && this.status == 200){
+                        const res = JSON.parse(this.responseText);
+                        document.getElementById("res_binary").innerHTML = res.bin;
+                        document.getElementById("res_numeric").innerHTML = res.num;
+                    }
+                };
+
+                req.open("POST", "getres", true);
+                req.setRequestHeader("Content-Type", "text/plain");
+                if(text.length > 0){
+                    req.send(text);
+                    console.log(text)
+                }
+            }
+        </script>
+    </body>
+</html>
