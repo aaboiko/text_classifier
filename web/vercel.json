@@ -1,7 +1,7 @@
 {
     "builds": [
       {
-        "src": "web/wsgi.py",
+        "src": "text_classifier/web/wsgi.py",
         "use": "@vercel/python"
       }
     ],
