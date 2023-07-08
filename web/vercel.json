@@ -1,14 +1,14 @@
 {
     "builds": [
       {
-        "src": "server/wsgi.py",
+        "src": "text-classifier-fjzh/wsgi.py",
         "use": "@vercel/python"
       }
     ],
     "routes": [
       {
         "src": "/(.*)",
-        "dest": "server/wsgi.py"
+        "dest": "text-classifier-fjzh/wsgi.py"
       }
     ]
 }
